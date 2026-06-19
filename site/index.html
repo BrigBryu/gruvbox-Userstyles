@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Gruvbox Userstyles (unofficial)</title>
+<style>
+  :root {
+    --bg: #282828; --bg1: #3c3836; --fg: #ebdbb2; --muted: #a89984;
+    --accent: #d3869b; --aqua: #8ec07c; --yellow: #fabd2f;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; background: var(--bg); color: var(--fg);
+    font: 16px/1.6 ui-monospace, "JetBrains Mono", SFMono-Regular, Menlo, monospace;
+    display: flex; justify-content: center; padding: 8vh 1.25rem;
+  }
+  main { width: 100%; max-width: 640px; }
+  h1 { margin: 0 0 .25rem; font-size: 1.9rem; color: var(--yellow); }
+  .sub { color: var(--muted); margin: 0 0 .25rem; }
+  .badge {
+    display: inline-block; margin-bottom: 2rem; padding: .15rem .5rem;
+    border: 1px solid var(--bg1); border-radius: 6px; color: var(--accent);
+    font-size: .8rem;
+  }
+  h2 { font-size: 1rem; color: var(--aqua); margin: 2rem 0 .5rem; }
+  ol { margin: 0; padding-left: 1.25rem; }
+  li { margin: .4rem 0; }
+  a { color: var(--accent); }
+  a:hover { color: var(--yellow); }
+  code, .file {
+    background: var(--bg1); padding: .1rem .4rem; border-radius: 5px;
+    font-size: .9em;
+  }
+  .btn {
+    display: inline-block; margin-top: .5rem; padding: .55rem 1rem;
+    background: var(--accent); color: var(--bg); border-radius: 8px;
+    text-decoration: none; font-weight: 600;
+  }
+  .btn:hover { background: var(--yellow); color: var(--bg); }
+  footer { margin-top: 2.5rem; color: var(--muted); font-size: .85rem; }
+</style>
+</head>
+<body>
+<main>
+  <h1>Gruvbox Userstyles</h1>
+  <p class="sub">A Gruvbox recolor of the Catppuccin userstyles for Stylus.</p>
+  <span class="badge">unofficial · not affiliated with Catppuccin or Gruvbox</span>
+
+  <h2>Install</h2>
+  <ol>
+    <li>Install the <a href="https://chromewebstore.google.com/detail/stylus/clngdbkpkpeebahjckkjfobafhncgmne">Stylus</a> browser extension.</li>
+    <li>Download the import file below.</li>
+    <li>In Stylus: <strong>Manage → Backup → Import</strong> the file. Every style installs at once.</li>
+  </ol>
+  <a class="btn" href="https://github.com/BrigBryu/gruvbox-Userstyles/raw/main/dist/gruvbox-userstyles.import.json" download>Download import.json</a>
+
+  <footer>
+    Built on the
+    <a href="https://github.com/catppuccin/userstyles">Catppuccin Userstyles</a>
+    project — all styles and tooling are their work, MIT licensed.
+    Source: <a href="https://github.com/BrigBryu/gruvbox-Userstyles">BrigBryu/gruvbox-Userstyles</a>.
+  </footer>
+</main>
+</body>
+</html>

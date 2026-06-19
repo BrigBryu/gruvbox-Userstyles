@@ -1,6 +1,12 @@
 MIT License
 
-Copyright (c) 2021 Catppuccin
+Copyright (c) 2021 Catppuccin (original Catppuccin Userstyles)
+Copyright (c) 2026 BrigBryu (unofficial Gruvbox port)
+
+This project is an unofficial Gruvbox recolor derived from the Catppuccin
+Userstyles (https://github.com/catppuccin/userstyles). The original styles and
+tooling are the work of the Catppuccin contributors and remain under the
+copyright notice above, as required by the MIT License.
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
