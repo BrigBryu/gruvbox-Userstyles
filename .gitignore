@@ -2,8 +2,8 @@ deno_cache/
 __pycache__/
 node_modules/
 dist/*
-# Keep the generated Gruvbox Stylus import committed so it can be downloaded.
-!dist/gruvbox-userstyles.import.json
+# Keep the generated Stylus import files committed so they can be downloaded.
+!dist/*.import.json
 .direnv/
 
 .idea/

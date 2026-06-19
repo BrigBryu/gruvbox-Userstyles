@@ -1,0 +1,52 @@
+import type { Palette } from "@/themes/types.ts";
+
+// Gruvbox by Pavel Pertsev (morhetz) — https://github.com/morhetz/gruvbox
+const gruvbox: Palette = {
+  key: "gruvbox",
+  label: "Gruvbox",
+  credit: "Gruvbox by Pavel Pertsev — https://github.com/morhetz/gruvbox",
+  dark: {
+    base: "#282828",
+    mantle: "#1d2021",
+    crust: "#1d2021",
+    surface0: "#3c3836",
+    surface1: "#504945",
+    surface2: "#665c54",
+    overlay0: "#7c6f64",
+    overlay1: "#928374",
+    overlay2: "#a89984",
+    text: "#ebdbb2",
+    subtext1: "#d5c4a1",
+    subtext0: "#bdae93",
+    red: "#fb4934",
+    orange: "#fe8019",
+    yellow: "#fabd2f",
+    green: "#b8bb26",
+    aqua: "#8ec07c",
+    blue: "#83a598",
+    purple: "#d3869b",
+  },
+  light: {
+    base: "#fbf1c7",
+    mantle: "#f2e5bc",
+    crust: "#ebdbb2",
+    surface0: "#ebdbb2",
+    surface1: "#d5c4a1",
+    surface2: "#bdae93",
+    overlay0: "#a89984",
+    overlay1: "#928374",
+    overlay2: "#7c6f64",
+    text: "#3c3836",
+    subtext1: "#504945",
+    subtext0: "#665c54",
+    red: "#9d0006",
+    orange: "#af3a03",
+    yellow: "#b57614",
+    green: "#79740e",
+    aqua: "#427b58",
+    blue: "#076678",
+    purple: "#8f3f71",
+  },
+};
+
+export default gruvbox;
