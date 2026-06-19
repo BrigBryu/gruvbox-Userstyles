@@ -1,9 +1,9 @@
 deno_cache/
 __pycache__/
 node_modules/
-dist/*
-# Keep the generated Stylus import files committed so they can be downloaded.
-!dist/*.import.json
+# Generated import files are build artifacts — distributed via GitHub Releases,
+# not committed. Generate locally with `deno task generate:themes`.
+dist/
 .direnv/
 
 .idea/

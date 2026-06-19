@@ -28,7 +28,9 @@ different theme cleanly replaces the previous one.
 ## Themes
 
 Click a link to download the import file, then **Manage → Backup → Import** it
-in Stylus.
+in Stylus. (Files are published on the
+[Releases](https://github.com/BrigBryu/gruvbox-Userstyles/releases/tag/themes)
+page, regenerated automatically by CI — they aren't committed to the repo.)
 
 | Theme | Light? | Import file |
 | --- | --- | --- |

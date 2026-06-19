@@ -1,27 +1,47 @@
 name: Publish import files
 
-# Keeps the `themes` release assets in sync with dist/*.import.json so the
-# README/site download links (release assets force a real download) stay current.
+# The Stylus import files are build artifacts, not committed to the repo. This
+# regenerates them and (re)publishes them as assets on the `themes` release, so
+# the README/site download links (release assets force a real download) stay
+# current. Triggered whenever the palettes, generator, or upstream styles change.
 
 on:
   push:
     branches: [main]
-    paths: ["dist/*.import.json"]
+    paths:
+      - "palettes/**"
+      - "scripts/themes/**"
+      - "lib/lib.less"
+      - "styles/**"
+      - ".github/workflows/publish-imports.yml"
   workflow_dispatch:
 
 permissions:
   contents: write
 
+concurrency:
+  group: publish-imports
+  cancel-in-progress: true
+
 jobs:
   publish:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-      - name: Upload import files to the themes release
+      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6
+
+      - name: Setup Deno
+        uses: nekowinston/setup-deno@a790e9ad1e6b1c727a4ea621a8a8219b1f2c373d # main
+        with:
+          deno-version: v2.3.5
+
+      - name: Generate import files
+        run: deno task generate:themes
+
+      - name: Publish to the themes release
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
           gh release create themes dist/*.import.json \
             --title "Theme import files" \
-            --notes "Stylus import files for every theme. Download an asset, then Stylus → Manage → Backup → Import." \
+            --notes "Stylus import files for every theme (auto-generated). Download an asset, then Stylus → Manage → Backup → Import." \
             || gh release upload themes dist/*.import.json --clobber
