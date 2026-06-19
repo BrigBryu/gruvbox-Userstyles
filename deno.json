@@ -30,6 +30,8 @@
   "tasks": {
     "ci:generate": "deno run -A ./scripts/generate/main.ts",
     "ci:stylus-import": "deno run -A ./scripts/stylus-import/main.ts",
+    "generate:gruvbox": "deno run -A ./scripts/gruvbox/generate-import.ts",
+    "check:gruvbox": "deno run -A ./scripts/gruvbox/check.ts",
     "ci:sync-maintainers": "deno run -A ./scripts/sync-maintainers/main.ts",
     "ci:update-types": "deno run -A ./scripts/types/update-types.ts",
     "ci:bump": "deno run -A ./scripts/bump-version/main.ts",
