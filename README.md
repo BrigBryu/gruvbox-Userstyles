@@ -10,6 +10,10 @@ for the <a href="https://add0n.com/stylus.html">Stylus</a> browser extension.
 <b>Not affiliated with Catppuccin or Gruvbox.</b> This is a personal fork.
 </p>
 
+<p align="center">
+<i>Made for myself, out of my appreciation for Gruvbox.</i>
+</p>
+
 ## Install
 
 1. Install **Stylus** ([Chrome](https://chromewebstore.google.com/detail/stylus/clngdbkpkpeebahjckkjfobafhncgmne) · [Firefox](https://addons.mozilla.org/firefox/addon/styl-us/)).
