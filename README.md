@@ -27,30 +27,31 @@ different theme cleanly replaces the previous one.
 
 ## Themes
 
-Download links (right-click → Save, or open and save the raw JSON):
+Click a link to download the import file, then **Manage → Backup → Import** it
+in Stylus.
 
 | Theme | Light? | Import file |
 | --- | --- | --- |
-| **Gruvbox** ⭐ | ✅ auto | [`gruvbox-userstyles.import.json`](https://github.com/BrigBryu/gruvbox-Userstyles/raw/main/dist/gruvbox-userstyles.import.json) — see accents below |
-| Tokyo Night | ✅ auto | [`tokyo-night.import.json`](https://github.com/BrigBryu/gruvbox-Userstyles/raw/main/dist/tokyo-night.import.json) |
-| Nord | dark only | [`nord.import.json`](https://github.com/BrigBryu/gruvbox-Userstyles/raw/main/dist/nord.import.json) |
-| Dracula | dark only | [`dracula.import.json`](https://github.com/BrigBryu/gruvbox-Userstyles/raw/main/dist/dracula.import.json) |
-| Solarized | ✅ auto | [`solarized.import.json`](https://github.com/BrigBryu/gruvbox-Userstyles/raw/main/dist/solarized.import.json) |
-| Kanagawa | ✅ auto | [`kanagawa.import.json`](https://github.com/BrigBryu/gruvbox-Userstyles/raw/main/dist/kanagawa.import.json) |
-| Rosé Pine | ✅ auto | [`rose-pine.import.json`](https://github.com/BrigBryu/gruvbox-Userstyles/raw/main/dist/rose-pine.import.json) |
-| One Dark | ✅ auto | [`onedark.import.json`](https://github.com/BrigBryu/gruvbox-Userstyles/raw/main/dist/onedark.import.json) |
-| Everforest | ✅ auto | [`everforest.import.json`](https://github.com/BrigBryu/gruvbox-Userstyles/raw/main/dist/everforest.import.json) |
+| **Gruvbox** ⭐ | ✅ auto | [`gruvbox-userstyles.import.json`](https://github.com/BrigBryu/gruvbox-Userstyles/releases/download/themes/gruvbox-userstyles.import.json) — see accents below |
+| Tokyo Night | ✅ auto | [`tokyo-night.import.json`](https://github.com/BrigBryu/gruvbox-Userstyles/releases/download/themes/tokyo-night.import.json) |
+| Nord | dark only | [`nord.import.json`](https://github.com/BrigBryu/gruvbox-Userstyles/releases/download/themes/nord.import.json) |
+| Dracula | dark only | [`dracula.import.json`](https://github.com/BrigBryu/gruvbox-Userstyles/releases/download/themes/dracula.import.json) |
+| Solarized | ✅ auto | [`solarized.import.json`](https://github.com/BrigBryu/gruvbox-Userstyles/releases/download/themes/solarized.import.json) |
+| Kanagawa | ✅ auto | [`kanagawa.import.json`](https://github.com/BrigBryu/gruvbox-Userstyles/releases/download/themes/kanagawa.import.json) |
+| Rosé Pine | ✅ auto | [`rose-pine.import.json`](https://github.com/BrigBryu/gruvbox-Userstyles/releases/download/themes/rose-pine.import.json) |
+| One Dark | ✅ auto | [`onedark.import.json`](https://github.com/BrigBryu/gruvbox-Userstyles/releases/download/themes/onedark.import.json) |
+| Everforest | ✅ auto | [`everforest.import.json`](https://github.com/BrigBryu/gruvbox-Userstyles/releases/download/themes/everforest.import.json) |
 
 ### Gruvbox accents
 
 Gruvbox ships in seven accent flavors — pick one:
-[purple](https://github.com/BrigBryu/gruvbox-Userstyles/raw/main/dist/gruvbox-purple.import.json) (default) ·
-[green](https://github.com/BrigBryu/gruvbox-Userstyles/raw/main/dist/gruvbox-green.import.json) ·
-[orange](https://github.com/BrigBryu/gruvbox-Userstyles/raw/main/dist/gruvbox-orange.import.json) ·
-[red](https://github.com/BrigBryu/gruvbox-Userstyles/raw/main/dist/gruvbox-red.import.json) ·
-[yellow](https://github.com/BrigBryu/gruvbox-Userstyles/raw/main/dist/gruvbox-yellow.import.json) ·
-[aqua](https://github.com/BrigBryu/gruvbox-Userstyles/raw/main/dist/gruvbox-aqua.import.json) ·
-[blue](https://github.com/BrigBryu/gruvbox-Userstyles/raw/main/dist/gruvbox-blue.import.json)
+[purple](https://github.com/BrigBryu/gruvbox-Userstyles/releases/download/themes/gruvbox-purple.import.json) (default) ·
+[green](https://github.com/BrigBryu/gruvbox-Userstyles/releases/download/themes/gruvbox-green.import.json) ·
+[orange](https://github.com/BrigBryu/gruvbox-Userstyles/releases/download/themes/gruvbox-orange.import.json) ·
+[red](https://github.com/BrigBryu/gruvbox-Userstyles/releases/download/themes/gruvbox-red.import.json) ·
+[yellow](https://github.com/BrigBryu/gruvbox-Userstyles/releases/download/themes/gruvbox-yellow.import.json) ·
+[aqua](https://github.com/BrigBryu/gruvbox-Userstyles/releases/download/themes/gruvbox-aqua.import.json) ·
+[blue](https://github.com/BrigBryu/gruvbox-Userstyles/releases/download/themes/gruvbox-blue.import.json)
 
 For other themes you can change the accent per-site via Stylus's **Accent**
 dropdown on each style.

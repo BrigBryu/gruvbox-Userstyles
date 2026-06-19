@@ -1,0 +1,27 @@
+name: Publish import files
+
+# Keeps the `themes` release assets in sync with dist/*.import.json so the
+# README/site download links (release assets force a real download) stay current.
+
+on:
+  push:
+    branches: [main]
+    paths: ["dist/*.import.json"]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Upload import files to the themes release
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh release create themes dist/*.import.json \
+            --title "Theme import files" \
+            --notes "Stylus import files for every theme. Download an asset, then Stylus → Manage → Backup → Import." \
+            || gh release upload themes dist/*.import.json --clobber

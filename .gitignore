@@ -4,8 +4,6 @@ node_modules/
 dist/*
 # Keep the generated Stylus import files committed so they can be downloaded.
 !dist/*.import.json
-# CI copies dist/ here for same-origin Pages downloads; never committed.
-site/dist/
 .direnv/
 
 .idea/
