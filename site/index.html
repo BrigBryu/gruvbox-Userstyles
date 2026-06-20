@@ -1,105 +1,231 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Gruvbox Userstyles (unofficial)</title>
-<style>
-  :root {
-    --bg: #282828; --bg1: #3c3836; --fg: #ebdbb2; --muted: #a89984;
-    --accent: #d3869b; --aqua: #8ec07c; --yellow: #fabd2f;
-  }
-  * { box-sizing: border-box; }
-  body {
-    margin: 0; background: var(--bg); color: var(--fg);
-    font: 16px/1.6 ui-monospace, "JetBrains Mono", SFMono-Regular, Menlo, monospace;
-    display: flex; justify-content: center; padding: 8vh 1.25rem;
-  }
-  main { width: 100%; max-width: 640px; }
-  h1 { margin: 0 0 .25rem; font-size: 1.9rem; color: var(--yellow); }
-  .sub { color: var(--muted); margin: 0 0 .25rem; }
-  .badge {
-    display: inline-block; margin-bottom: 2rem; padding: .15rem .5rem;
-    border: 1px solid var(--bg1); border-radius: 6px; color: var(--accent);
-    font-size: .8rem;
-  }
-  h2 { font-size: 1rem; color: var(--aqua); margin: 2rem 0 .5rem; }
-  ol { margin: 0; padding-left: 1.25rem; }
-  li { margin: .4rem 0; }
-  a { color: var(--accent); }
-  a:hover { color: var(--yellow); }
-  code, .file {
-    background: var(--bg1); padding: .1rem .4rem; border-radius: 5px;
-    font-size: .9em;
-  }
-  .btn {
-    display: inline-block; margin-top: .5rem; padding: .55rem 1rem;
-    background: var(--accent); color: var(--bg); border-radius: 8px;
-    text-decoration: none; font-weight: 600;
-  }
-  .btn:hover { background: var(--yellow); color: var(--bg); }
-  footer { margin-top: 2.5rem; color: var(--muted); font-size: .85rem; }
-</style>
-</head>
-<body>
-<main>
-  <h1>Gruvbox Userstyles</h1>
-  <p class="sub">A Gruvbox recolor of the Catppuccin userstyles for Stylus.</p>
-  <span class="badge">unofficial · not affiliated with Catppuccin or Gruvbox</span>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Gruvbox Userstyles (unofficial)</title>
+    <style>
+      :root {
+        --bg: #282828;
+        --bg1: #3c3836;
+        --fg: #ebdbb2;
+        --muted: #a89984;
+        --accent: #d3869b;
+        --aqua: #8ec07c;
+        --yellow: #fabd2f;
+      }
+      * {
+        box-sizing: border-box;
+      }
+      body {
+        margin: 0;
+        background: var(--bg);
+        color: var(--fg);
+        font:
+          16px/1.6 ui-monospace,
+          "JetBrains Mono",
+          SFMono-Regular,
+          Menlo,
+          monospace;
+        display: flex;
+        justify-content: center;
+        padding: 8vh 1.25rem;
+      }
+      main {
+        width: 100%;
+        max-width: 640px;
+      }
+      h1 {
+        margin: 0 0 0.25rem;
+        font-size: 1.9rem;
+        color: var(--yellow);
+      }
+      .sub {
+        color: var(--muted);
+        margin: 0 0 0.25rem;
+      }
+      .badge {
+        display: inline-block;
+        margin-bottom: 2rem;
+        padding: 0.15rem 0.5rem;
+        border: 1px solid var(--bg1);
+        border-radius: 6px;
+        color: var(--accent);
+        font-size: 0.8rem;
+      }
+      h2 {
+        font-size: 1rem;
+        color: var(--aqua);
+        margin: 2rem 0 0.5rem;
+      }
+      ol {
+        margin: 0;
+        padding-left: 1.25rem;
+      }
+      li {
+        margin: 0.4rem 0;
+      }
+      a {
+        color: var(--accent);
+      }
+      a:hover {
+        color: var(--yellow);
+      }
+      code, .file {
+        background: var(--bg1);
+        padding: 0.1rem 0.4rem;
+        border-radius: 5px;
+        font-size: 0.9em;
+      }
+      .btn {
+        display: inline-block;
+        margin-top: 0.5rem;
+        padding: 0.55rem 1rem;
+        background: var(--accent);
+        color: var(--bg);
+        border-radius: 8px;
+        text-decoration: none;
+        font-weight: 600;
+      }
+      .btn:hover {
+        background: var(--yellow);
+        color: var(--bg);
+      }
+      footer {
+        margin-top: 2.5rem;
+        color: var(--muted);
+        font-size: 0.85rem;
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <h1>Gruvbox Userstyles</h1>
+      <p class="sub">
+        A Gruvbox recolor of the Catppuccin userstyles for Stylus.
+      </p>
+      <span class="badge"
+      >unofficial · not affiliated with Catppuccin or Gruvbox</span>
 
-  <h2>Install</h2>
-  <ol>
-    <li>Install the <a href="https://chromewebstore.google.com/detail/stylus/clngdbkpkpeebahjckkjfobafhncgmne">Stylus</a> browser extension.</li>
-    <li>Pick a theme below and download its file.</li>
-    <li>In Stylus: <strong>Manage → Backup → Import</strong> the file. Every style installs at once.</li>
-  </ol>
-  <p class="sub">Themes with a light variant auto-switch with your OS appearance.</p>
+      <h2>Install</h2>
+      <ol>
+        <li>
+          Install the <a
+            href="https://chromewebstore.google.com/detail/stylus/clngdbkpkpeebahjckkjfobafhncgmne"
+          >Stylus</a> browser extension.
+        </li>
+        <li>Pick a theme below and download its file.</li>
+        <li>
+          In Stylus: <strong>Manage → Backup → Import</strong> the file. Every
+          style installs at once.
+        </li>
+      </ol>
+      <p class="sub">
+        Themes with a light variant auto-switch with your OS appearance.
+      </p>
 
-  <h2>Gruvbox <span style="color:var(--muted);font-weight:400">— normal palette</span></h2>
-  <p>
-    <a class="btn" href="https://github.com/BrigBryu/gruvbox-Userstyles/releases/download/themes/gruvbox-userstyles.import.json" download>Gruvbox (purple)</a>
-  </p>
-  <p>
-    compatibility files:
-    <a href="https://github.com/BrigBryu/gruvbox-Userstyles/releases/download/themes/gruvbox-green.import.json" download>green</a> ·
-    <a href="https://github.com/BrigBryu/gruvbox-Userstyles/releases/download/themes/gruvbox-orange.import.json" download>orange</a> ·
-    <a href="https://github.com/BrigBryu/gruvbox-Userstyles/releases/download/themes/gruvbox-red.import.json" download>red</a> ·
-    <a href="https://github.com/BrigBryu/gruvbox-Userstyles/releases/download/themes/gruvbox-yellow.import.json" download>yellow</a> ·
-    <a href="https://github.com/BrigBryu/gruvbox-Userstyles/releases/download/themes/gruvbox-aqua.import.json" download>aqua</a> ·
-    <a href="https://github.com/BrigBryu/gruvbox-Userstyles/releases/download/themes/gruvbox-blue.import.json" download>blue</a>
-  </p>
+      <h2>
+        Gruvbox <span style="color: var(--muted); font-weight: 400"
+        >— normal palette</span>
+      </h2>
+      <p>
+        <a
+          class="btn"
+          href="https://github.com/BrigBryu/gruvbox-Userstyles/releases/download/themes/gruvbox-userstyles.import.json"
+          download
+        >Gruvbox (purple)</a>
+      </p>
+      <p>
+        compatibility files:
+        <a
+          href="https://github.com/BrigBryu/gruvbox-Userstyles/releases/download/themes/gruvbox-green.import.json"
+          download
+        >green</a> ·
+        <a
+          href="https://github.com/BrigBryu/gruvbox-Userstyles/releases/download/themes/gruvbox-orange.import.json"
+          download
+        >orange</a> ·
+        <a
+          href="https://github.com/BrigBryu/gruvbox-Userstyles/releases/download/themes/gruvbox-red.import.json"
+          download
+        >red</a> ·
+        <a
+          href="https://github.com/BrigBryu/gruvbox-Userstyles/releases/download/themes/gruvbox-yellow.import.json"
+          download
+        >yellow</a> ·
+        <a
+          href="https://github.com/BrigBryu/gruvbox-Userstyles/releases/download/themes/gruvbox-aqua.import.json"
+          download
+        >aqua</a> ·
+        <a
+          href="https://github.com/BrigBryu/gruvbox-Userstyles/releases/download/themes/gruvbox-blue.import.json"
+          download
+        >blue</a>
+      </p>
 
-  <h2>Other themes</h2>
-  <p>
-    <a href="https://github.com/BrigBryu/gruvbox-Userstyles/releases/download/themes/tokyo-night.import.json" download>Tokyo Night</a> ·
-    <a href="https://github.com/BrigBryu/gruvbox-Userstyles/releases/download/themes/nord.import.json" download>Nord</a> ·
-    <a href="https://github.com/BrigBryu/gruvbox-Userstyles/releases/download/themes/dracula.import.json" download>Dracula</a> ·
-    <a href="https://github.com/BrigBryu/gruvbox-Userstyles/releases/download/themes/solarized.import.json" download>Solarized</a> ·
-    <a href="https://github.com/BrigBryu/gruvbox-Userstyles/releases/download/themes/kanagawa.import.json" download>Kanagawa</a> ·
-    <a href="https://github.com/BrigBryu/gruvbox-Userstyles/releases/download/themes/rose-pine.import.json" download>Rosé Pine</a> ·
-    <a href="https://github.com/BrigBryu/gruvbox-Userstyles/releases/download/themes/onedark.import.json" download>One Dark</a> ·
-    <a href="https://github.com/BrigBryu/gruvbox-Userstyles/releases/download/themes/everforest.import.json" download>Everforest</a>
-  </p>
+      <h2>Other themes</h2>
+      <p>
+        <a
+          href="https://github.com/BrigBryu/gruvbox-Userstyles/releases/download/themes/tokyo-night.import.json"
+          download
+        >Tokyo Night</a> ·
+        <a
+          href="https://github.com/BrigBryu/gruvbox-Userstyles/releases/download/themes/nord.import.json"
+          download
+        >Nord</a> ·
+        <a
+          href="https://github.com/BrigBryu/gruvbox-Userstyles/releases/download/themes/dracula.import.json"
+          download
+        >Dracula</a> ·
+        <a
+          href="https://github.com/BrigBryu/gruvbox-Userstyles/releases/download/themes/solarized.import.json"
+          download
+        >Solarized</a> ·
+        <a
+          href="https://github.com/BrigBryu/gruvbox-Userstyles/releases/download/themes/kanagawa.import.json"
+          download
+        >Kanagawa</a> ·
+        <a
+          href="https://github.com/BrigBryu/gruvbox-Userstyles/releases/download/themes/rose-pine.import.json"
+          download
+        >Rosé Pine</a> ·
+        <a
+          href="https://github.com/BrigBryu/gruvbox-Userstyles/releases/download/themes/onedark.import.json"
+          download
+        >One Dark</a> ·
+        <a
+          href="https://github.com/BrigBryu/gruvbox-Userstyles/releases/download/themes/everforest.import.json"
+          download
+        >Everforest</a>
+      </p>
 
-  <h2>Clear installed styles</h2>
-  <p>
-    Load the temporary Chrome helper extension from
-    <a href="https://github.com/BrigBryu/gruvbox-Userstyles/tree/main/tools/stylus-cleaner"><code>tools/stylus-cleaner</code></a>,
-    then click <strong>Preview</strong> and <strong>Delete matched styles</strong>.
-  </p>
-  <p class="sub">
-    The helper deletes exact marker matches and verified legacy matches only,
-    downloads a backup first, and avoids DevTools paste commands.
-  </p>
+      <h2>Clear installed styles</h2>
+      <p>
+        <a
+          href="https://github.com/BrigBryu/gruvbox-Userstyles/archive/refs/heads/main.zip"
+        >Download the repo ZIP</a>, unzip it, load the temporary Chrome
+        extension from
+        <a
+          href="https://github.com/BrigBryu/gruvbox-Userstyles/tree/main/tools/stylus-gruvbox-cleaner"
+        ><code>tools/stylus-gruvbox-cleaner</code></a>, then use <strong>Stylus
+          Gruvbox Cleaner</strong> to preview and delete.
+      </p>
+      <p class="sub">
+        It is not a general Stylus cleaner: it matches only Gruvbox imports with
+        the exact marker, or old imports with two repo signals, and downloads a
+        backup first.
+      </p>
 
-  <footer>
-    Built on the
-    <a href="https://github.com/catppuccin/userstyles">Catppuccin Userstyles</a>
-    project — all site styles and tooling are their work, MIT licensed. Theme
-    color palettes belong to their respective authors. Not affiliated with any
-    of them.
-    Source: <a href="https://github.com/BrigBryu/gruvbox-Userstyles">BrigBryu/gruvbox-Userstyles</a>.
-  </footer>
-</main>
-</body>
+      <footer>
+        Built on the
+        <a href="https://github.com/catppuccin/userstyles"
+        >Catppuccin Userstyles</a>
+        project — all site styles and tooling are their work, MIT licensed.
+        Theme color palettes belong to their respective authors. Not affiliated
+        with any of them. Source: <a
+          href="https://github.com/BrigBryu/gruvbox-Userstyles"
+        >BrigBryu/gruvbox-Userstyles</a>.
+      </footer>
+    </main>
+  </body>
 </html>

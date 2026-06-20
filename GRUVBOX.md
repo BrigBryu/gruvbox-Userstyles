@@ -1,17 +1,12 @@
 # Theme-pack docs (unofficial)
 
-Vim-style theme packs (Gruvbox + friends) built as a thin recolor layer on top
-of the [Catppuccin userstyles](https://github.com/catppuccin/userstyles).
+Vim-style theme packs (Gruvbox + friends) built as a thin recolor layer on top of the [Catppuccin userstyles](https://github.com/catppuccin/userstyles).
 
-> Not affiliated with or endorsed by Catppuccin or any theme. All credit for the
-> site styles goes to the Catppuccin userstyles maintainers; color palettes
-> belong to their respective authors (see the README credits).
+> Not affiliated with or endorsed by Catppuccin or any theme. All credit for the site styles goes to the Catppuccin userstyles maintainers; color palettes belong to their respective authors (see the README credits).
 
 ## How it works (the architecture)
 
-The upstream styles are never edited. Each Catppuccin style imports a shared
-Less library and looks colors up by 26 semantic roles (`@base`, `@text`,
-`@mauve`, …). We swap **only that library**, per theme:
+The upstream styles are never edited. Each Catppuccin style imports a shared Less library and looks colors up by 26 semantic roles (`@base`, `@text`, `@mauve`, …). We swap **only that library**, per theme:
 
 ```
 palettes/<theme>.ts            (19 colors: 12 neutrals + 7 accents, dark + light)
@@ -23,74 +18,51 @@ generated theme lib            (same #lib API + filters, theme colors)
 dist/<theme>.import.json        (one Stylus backup, all styles, self-contained)
 ```
 
-| File | Purpose |
-| --- | --- |
-| `palettes/<theme>.ts` | A theme's colors (dark + optional light) + credit. **Edit colors here.** |
-| `scripts/themes/types.ts` | `Mode`/`Palette` types + `expand()` (role mapping) + validation. |
-| `scripts/themes/registry.ts` | The list of all themes. |
-| `scripts/themes/buildlib.ts` | Splices a palette into upstream `lib/lib.less`. |
-| `scripts/themes/generate-import.ts` | Builds every `dist/*.import.json`. |
-| `scripts/themes/check.ts` | Validates palettes + checks for compile regressions. |
+| File                                | Purpose                                                                  |
+| ----------------------------------- | ------------------------------------------------------------------------ |
+| `palettes/<theme>.ts`               | A theme's colors (dark + optional light) + credit. **Edit colors here.** |
+| `scripts/themes/types.ts`           | `Mode`/`Palette` types + `expand()` (role mapping) + validation.         |
+| `scripts/themes/registry.ts`        | The list of all themes.                                                  |
+| `scripts/themes/buildlib.ts`        | Splices a palette into upstream `lib/lib.less`.                          |
+| `scripts/themes/generate-import.ts` | Builds every `dist/*.import.json`.                                       |
+| `scripts/themes/check.ts`           | Validates palettes + checks for compile regressions.                     |
 
 ### Light mode is automatic
 
-A palette's `light` variant maps to Catppuccin's `latte` flavor; `dark` maps to
-the other three. Since every style already picks `latte` when the OS is in light
-mode and `mocha` in dark mode, each import **follows the OS** with no per-style
-edits. Themes without an official light variant (Nord, Dracula) omit `light` and
-stay dark.
+A palette's `light` variant maps to Catppuccin's `latte` flavor; `dark` maps to the other three. Since every style already picks `latte` when the OS is in light mode and `mocha` in dark mode, each import **follows the OS** with no per-style edits. Themes without an official light variant (Nord, Dracula) omit `light` and stay dark.
 
 ### Why vendor the lib inline?
 
-The generator inlines the theme lib into each style inside the `import.json`, so
-the import is **self-contained**: Stylus needs no network and nothing depends on
-this repo being reachable. The `styles/**` files stay byte-for-byte upstream,
-which keeps `git merge upstream/main` clean — the opposite tradeoff from editing
-each style or compiling to plain CSS (which would lose the per-style `@var`
-options).
+The generator inlines the theme lib into each style inside the `import.json`, so the import is **self-contained**: Stylus needs no network and nothing depends on this repo being reachable. The `styles/**` files stay byte-for-byte upstream, which keeps `git merge upstream/main` clean — the opposite tradeoff from editing each style or compiling to plain CSS (which would lose the per-style `@var` options).
 
 ## Install (one time)
 
-1. Install **Stylus**
-   ([Chrome Web Store](https://chromewebstore.google.com/detail/stylus/clngdbkpkpeebahjckkjfobafhncgmne)).
-2. Get the import file for your theme from `dist/` (see the README table), by
-   cloning this repo or downloading the one JSON from GitHub.
-   - If you load it from a local file and Stylus refuses, go to
-     `chrome://extensions` → Stylus → **Details** → enable **Allow access to
-     file URLs**.
+1. Install **Stylus** ([Chrome Web Store](https://chromewebstore.google.com/detail/stylus/clngdbkpkpeebahjckkjfobafhncgmne)).
+2. Get the import file for your theme from `dist/` (see the README table), by cloning this repo or downloading the one JSON from GitHub.
+   - If you load it from a local file and Stylus refuses, go to `chrome://extensions` → Stylus → **Details** → enable **Allow access to file URLs**.
 3. Open Stylus → **Manage** → **Backup → Import**.
 4. Select the file. All ~134 styles install at once.
-5. On themed sites, **disable Dark Reader / other global theming extensions** so
-   they don't fight the userstyle.
+5. On themed sites, **disable Dark Reader / other global theming extensions** so they don't fight the userstyle.
 
-Verify: open <https://github.com> — it should render in your theme. Toggle your
-OS appearance light↔dark to see auto-switching (on themes that ship light).
+Verify: open <https://github.com> — it should render in your theme. Toggle your OS appearance light↔dark to see auto-switching (on themes that ship light).
 
 ## Clearing this repo's styles
 
-Do not use Stylus's broad orphan-delete import workflow for this. It can include
-unrelated user styles. Use the temporary Chrome helper extension in
-[`tools/stylus-cleaner`](tools/stylus-cleaner) instead.
+Do not use Stylus's broad orphan-delete import workflow for this. It can include unrelated user styles. Use the temporary Chrome helper extension in [`tools/stylus-gruvbox-cleaner`](tools/stylus-gruvbox-cleaner) instead.
 
-1. Open Chrome → `chrome://extensions`.
-2. Enable **Developer mode**.
-3. Click **Load unpacked** and select `tools/stylus-cleaner`.
-4. Open the **Gruvbox Cleaner** extension popup.
-5. Click **Preview**, review the matched styles, then click **Delete matched styles**.
-6. Remove the helper extension when you are done.
+1. Download [this repo as a ZIP](https://github.com/BrigBryu/gruvbox-Userstyles/archive/refs/heads/main.zip) and unzip it.
+2. Open Chrome → `chrome://extensions`.
+3. Enable **Developer mode**.
+4. Click **Load unpacked** and select `tools/stylus-gruvbox-cleaner`.
+5. Open the **Stylus Gruvbox Cleaner** extension popup.
+6. Click **Preview**, review the matched styles, then click **Delete matched styles**.
+7. Remove the helper extension when you are done.
 
-Generated imports include the stable marker
-`installed-from-id: brigbryu-gruvbox-userstyles`. Old imports without the marker
-are matched only by two independent repo signals. Chrome will show a
-debugger-permission warning because the helper intentionally controls the Stylus
-Manage tab. The older DevTools helper remains available at
-[`site/clear-stylus-console.js`](site/clear-stylus-console.js) as an advanced
-fallback.
+Generated imports include the stable marker `installed-from-id: brigbryu-gruvbox-userstyles`. Old imports without the marker are matched only by two independent repo signals, such as repo URL plus namespace/source reference. Chrome will show a debugger-permission warning because the helper intentionally controls the Stylus Manage tab. The older DevTools helper remains available at [`site/clear-stylus-console.js`](site/clear-stylus-console.js) as an advanced fallback.
 
 ## Updating later
 
-Updates are manual on purpose. The generated styles have **no `@updateURL`**, so
-Stylus never silently pulls the Catppuccin versions back.
+Updates are manual on purpose. The generated styles have **no `@updateURL`**, so Stylus never silently pulls the Catppuccin versions back.
 
 ```bash
 # one-time: point at the upstream Catppuccin repo
@@ -103,50 +75,30 @@ deno task generate:themes     # regenerate every dist/*.import.json
 deno task check:themes        # confirm nothing regressed
 ```
 
-Then re-import the file(s) in Stylus (**Backup → Import**). Stylus matches by
-name and updates the existing styles.
+Then re-import the file(s) in Stylus (**Backup → Import**). Stylus matches by name and updates the existing styles.
 
 ## Commands
 
-| Command | What it does |
-| --- | --- |
-| `deno task generate:themes` | Build every `dist/<theme>.import.json` (+ Gruvbox accents). |
-| `deno task generate:gruvbox` | Build just Gruvbox (and its 7 accent files). |
-| `deno task check:themes` | Validate all palettes + fail on any compile regression. |
+| Command                      | What it does                                                |
+| ---------------------------- | ----------------------------------------------------------- |
+| `deno task generate:themes`  | Build every `dist/<theme>.import.json` (+ Gruvbox accents). |
+| `deno task generate:gruvbox` | Build just Gruvbox (and its 7 accent files).                |
+| `deno task check:themes`     | Validate all palettes + fail on any compile regression.     |
 
 ## Add a new theme
 
-1. Copy an existing file in `palettes/` (e.g. `palettes/nord.ts`) to
-   `palettes/<your-theme>.ts`.
-2. Fill in the 19 colors for `dark` (and `light` if the theme has one): 12
-   neutrals (`base`, `mantle`, `crust`, `surface0-2`, `overlay0-2`, `text`,
-   `subtext1`, `subtext0`) + 7 accents (`red`, `orange`, `yellow`, `green`,
-   `aqua`, `blue`, `purple`). Use `overrides` for any extra distinct hue (e.g.
-   a separate `pink`). Set `key`, `label`, and `credit`.
+1. Copy an existing file in `palettes/` (e.g. `palettes/nord.ts`) to `palettes/<your-theme>.ts`.
+2. Fill in the 19 colors for `dark` (and `light` if the theme has one): 12 neutrals (`base`, `mantle`, `crust`, `surface0-2`, `overlay0-2`, `text`, `subtext1`, `subtext0`) + 7 accents (`red`, `orange`, `yellow`, `green`, `aqua`, `blue`, `purple`). Use `overrides` for any extra distinct hue (e.g. a separate `pink`). Set `key`, `label`, and `credit`.
 3. Register it in `scripts/themes/registry.ts`.
-4. `deno task generate:themes && deno task check:themes`, then import
-   `dist/<your-theme>.import.json`.
+4. `deno task generate:themes && deno task check:themes`, then import `dist/<your-theme>.import.json`.
 
 ## Tweaking Gruvbox accents
 
-Gruvbox emits 7 variant files (`dist/gruvbox-<variant>.import.json`) for
-backwards-compatible release links, but they all keep the normal Gruvbox
-`accentColor` default. Earlier accent-specific files changed every style's
-default accent globally, and some upstream styles use `@accent` broadly enough
-to turn large UI surfaces orange/green/etc. Change the accent per-site via
-Stylus's **Accent** dropdown when a specific site needs a stronger highlight
-color.
+Gruvbox emits 7 variant files (`dist/gruvbox-<variant>.import.json`) for backwards-compatible release links, but they all keep the normal Gruvbox `accentColor` default. Earlier accent-specific files changed every style's default accent globally, and some upstream styles use `@accent` broadly enough to turn large UI surfaces orange/green/etc. Change the accent per-site via Stylus's **Accent** dropdown when a specific site needs a stronger highlight color.
 
 ## Known limitations
 
-- **`libreddit`** hardcodes Catppuccin hex values directly instead of using the
-  library, so it is **not** recolored. Recolor it by hand if you use it.
-- **Light mode** only applies where the theme has a `light` variant *and* the
-  site exposes a light theme (most do, via `prefers-color-scheme`). Sites with
-  no light theme stay dark. Nord and Dracula are dark-only by design.
-- **Image/icon filters** (`@*-filter` CSS filter chains a few styles use to
-  recolor SVGs/images) are inherited unchanged from Catppuccin, so recolored
-  raster assets won't perfectly match the theme. Most styles don't use them.
-- **`deepseek`** trips a pre-existing `rgb(var(--x))` quirk in the offline
-  `check` compiler (it fails the same way with the upstream lib), so the checker
-  skips it. It still installs and works in Stylus.
+- **`libreddit`** hardcodes Catppuccin hex values directly instead of using the library, so it is **not** recolored. Recolor it by hand if you use it.
+- **Light mode** only applies where the theme has a `light` variant _and_ the site exposes a light theme (most do, via `prefers-color-scheme`). Sites with no light theme stay dark. Nord and Dracula are dark-only by design.
+- **Image/icon filters** (`@*-filter` CSS filter chains a few styles use to recolor SVGs/images) are inherited unchanged from Catppuccin, so recolored raster assets won't perfectly match the theme. Most styles don't use them.
+- **`deepseek`** trips a pre-existing `rgb(var(--x))` quirk in the offline `check` compiler (it fails the same way with the upstream lib), so the checker skips it. It still installs and works in Stylus.
