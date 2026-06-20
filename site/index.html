@@ -83,14 +83,13 @@
 
   <h2>Clear installed styles</h2>
   <p>
-    Open Stylus <strong>Manage</strong>, paste
-    <a href="./clear-stylus-console.js">clear-stylus-console.js</a> in that
-    page's DevTools console, then review the preview. To delete, run
-    <code>clearGruvboxStyles({ delete: true })</code>.
+    Load the temporary Chrome helper extension from
+    <a href="https://github.com/BrigBryu/gruvbox-Userstyles/tree/main/tools/stylus-cleaner"><code>tools/stylus-cleaner</code></a>,
+    then click <strong>Preview</strong> and <strong>Delete matched styles</strong>.
   </p>
   <p class="sub">
-    The helper deletes exact marker matches only, downloads a backup first, and
-    requires a typed confirmation. Old unmarked imports are listed separately.
+    The helper deletes exact marker matches and verified legacy matches only,
+    downloads a backup first, and avoids DevTools paste commands.
   </p>
 
   <footer>

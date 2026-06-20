@@ -44,7 +44,9 @@
   function rowsFor(styles, matcher) {
     return styles
       .map((style) => ({ style, result: matcher(style) }))
-      .filter(({ result }) => result.match)
+      .filter(({ style, result }) =>
+        result.match && Number.isInteger(style.id) && style.id > 0
+      )
       .map(({ style, result }) => ({
         id: style.id,
         name: displayName(style),

@@ -69,21 +69,23 @@ OS appearance light↔dark to see auto-switching (on themes that ship light).
 ## Clearing this repo's styles
 
 Do not use Stylus's broad orphan-delete import workflow for this. It can include
-unrelated user styles. Use the targeted helper in
-[`site/clear-stylus-console.js`](site/clear-stylus-console.js) instead.
+unrelated user styles. Use the temporary Chrome helper extension in
+[`tools/stylus-cleaner`](tools/stylus-cleaner) instead.
 
-1. Open Stylus → **Manage**.
-2. Open DevTools on that Stylus page and paste the helper script.
-3. The helper runs a preview automatically.
-4. Run `clearGruvboxStyles({ delete: true })` to delete only styles with the
-   exact generated marker.
+1. Open Chrome → `chrome://extensions`.
+2. Enable **Developer mode**.
+3. Click **Load unpacked** and select `tools/stylus-cleaner`.
+4. Open the **Gruvbox Cleaner** extension popup.
+5. Click **Preview**, review the matched styles, then click **Delete matched styles**.
+6. Remove the helper extension when you are done.
 
 Generated imports include the stable marker
-`installed-from-id: brigbryu-gruvbox-userstyles`. The helper deletes only those
-marker-matched styles by default, downloads a full backup first, and requires
-typing `DELETE <count> GRUVBOX USERSTYLES` before removal. Old imports without
-the marker are listed as legacy candidates and are only deleted if you
-explicitly run `clearGruvboxStyles({ delete: true, legacy: true })`.
+`installed-from-id: brigbryu-gruvbox-userstyles`. Old imports without the marker
+are matched only by two independent repo signals. Chrome will show a
+debugger-permission warning because the helper intentionally controls the Stylus
+Manage tab. The older DevTools helper remains available at
+[`site/clear-stylus-console.js`](site/clear-stylus-console.js) as an advanced
+fallback.
 
 ## Updating later
 

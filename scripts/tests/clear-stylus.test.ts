@@ -2,6 +2,7 @@ import { assertEquals } from "@std/assert";
 
 import {
   legacyMatch,
+  matchedRows,
   REPO_SLUG,
   REPO_URL,
   STRICT_MARKER,
@@ -57,4 +58,29 @@ Deno.test("legacyMatch rejects unrelated upstream Catppuccin metadata", () => {
   };
 
   assertEquals(legacyMatch(style), { match: false, reason: "" });
+});
+
+Deno.test("matchedRows excludes missing and invalid ids", () => {
+  const styles: StylusStyleLike[] = [
+    {
+      sourceCode: `/* ${STRICT_MARKER} */`,
+    },
+    {
+      id: 0,
+      sourceCode: `/* ${STRICT_MARKER} */`,
+    },
+    {
+      id: 12.5,
+      sourceCode: `/* ${STRICT_MARKER} */`,
+    },
+    {
+      id: 42,
+      name: "GitHub Gruvbox",
+      sourceCode: `/* ${STRICT_MARKER} */`,
+    },
+  ];
+
+  assertEquals(matchedRows(styles), [
+    { id: 42, name: "GitHub Gruvbox", reason: "marker" },
+  ]);
 });

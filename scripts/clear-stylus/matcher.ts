@@ -3,6 +3,7 @@ export const REPO_SLUG = "BrigBryu/gruvbox-Userstyles";
 export const STRICT_MARKER = "installed-from-id: brigbryu-gruvbox-userstyles";
 
 export interface StylusStyleLike {
+  id?: number;
   name?: string;
   customName?: string;
   url?: string;
@@ -18,6 +19,12 @@ export interface MatchResult {
   reason: string;
 }
 
+export interface MatchedStyle {
+  id: number;
+  name: string;
+  reason: string;
+}
+
 export function displayName(style: StylusStyleLike): string {
   return style.customName || style.name || "(unnamed style)";
 }
@@ -27,6 +34,39 @@ export function strictMatch(style: StylusStyleLike): MatchResult {
     return { match: true, reason: "marker" };
   }
   return { match: false, reason: "" };
+}
+
+export function matchedRows(
+  styles: StylusStyleLike[],
+  options: { legacy?: boolean } = {},
+): MatchedStyle[] {
+  const rows: MatchedStyle[] = [];
+  for (const style of styles) {
+    const id = style.id;
+    if (typeof id !== "number" || !Number.isInteger(id) || id <= 0) continue;
+
+    const strict = strictMatch(style);
+    if (strict.match) {
+      rows.push({
+        id,
+        name: displayName(style),
+        reason: strict.reason,
+      });
+      continue;
+    }
+
+    if (options.legacy) {
+      const legacy = legacyMatch(style);
+      if (legacy.match) {
+        rows.push({
+          id,
+          name: displayName(style),
+          reason: legacy.reason,
+        });
+      }
+    }
+  }
+  return rows;
 }
 
 export function legacyMatch(style: StylusStyleLike): MatchResult {
