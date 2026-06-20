@@ -45,24 +45,28 @@ const FORK = {
 };
 const REMOTE_LIB_IMPORT =
   '@import "https://userstyles.catppuccin.com/lib/lib.less";';
+const INSTALLED_FROM_ID = "brigbryu-gruvbox-userstyles";
 
-// Accent variants generated for Gruvbox only: label -> Catppuccin accent key.
-const GRUVBOX_ACCENTS: Record<string, string> = {
-  purple: "mauve",
-  green: "green",
-  orange: "peach",
-  red: "red",
-  yellow: "yellow",
-  aqua: "teal",
-  blue: "blue",
-};
+// Kept for backwards-compatible release filenames. These no longer change the
+// default accent globally because many upstream styles use @accent for broad UI
+// surfaces, which makes non-purple variants overpower the normal Gruvbox base.
+const GRUVBOX_VARIANTS = [
+  "purple",
+  "green",
+  "orange",
+  "red",
+  "yellow",
+  "aqua",
+  "blue",
+] as const;
 
 // ---- Re-brand a single style -----------------------------------------------
 function themeifyStyle(
   content: string,
   lib: string,
   palette: Palette,
-  accentKey?: string,
+  styleSlug: string,
+  variantLabel?: string,
 ): string {
   const headerRe = /(\/\* ==UserStyle==)([\s\S]*?)(==\/UserStyle== \*\/)/;
   const m = content.match(headerRe);
@@ -89,10 +93,17 @@ function themeifyStyle(
   // Drop @updateURL so Stylus never silently pulls the Catppuccin version.
   header = header.replace(/^@updateURL\s+.*$\n?/m, "");
 
-  // Set the default accent (Gruvbox accent variants only).
-  if (accentKey) header = setAccentDefault(header, accentKey);
-
   let out = content.replace(headerRe, `$1${header}$3`);
+  out = out.replace(
+    /(==\/UserStyle== \*\/)/,
+    `$1
+/* installed-from: ${FORK.slug} */
+/* installed-from-id: ${INSTALLED_FROM_ID} */
+/* generated-style-slug: ${styleSlug} */
+/* generated-theme: ${palette.key} */${
+      variantLabel ? `\n/* generated-variant: ${variantLabel} */` : ""
+    }`,
+  );
 
   if (!out.includes(REMOTE_LIB_IMPORT)) {
     throw new Error("expected lib.less import not found");
@@ -102,17 +113,6 @@ function themeifyStyle(
     () => `/* ${palette.label}: vendored theme lib */\n${lib}`,
   );
   return out;
-}
-
-/** Move the `*` default in the accentColor select line to `key`. */
-function setAccentDefault(header: string, key: string): string {
-  return header.replace(
-    /^@var select accentColor .*$/m,
-    (line) =>
-      line
-        .replace(/\*"/, '"') // clear current default
-        .replace(new RegExp(`("${key}:[^"]*)"`), '$1*"'), // star the chosen one
-  );
 }
 
 // ---- Assemble one import.json ----------------------------------------------
@@ -130,14 +130,20 @@ function buildImport(
   files: string[],
   lib: string,
   palette: Palette,
-  accentKey?: string,
+  variantLabel?: string,
 ): Record<string, unknown>[] {
   const data: Record<string, unknown>[] = [SETTINGS];
   for (const file of files) {
     const original = Deno.readTextFileSync(file);
     let source: string;
     try {
-      source = themeifyStyle(original, lib, palette, accentKey);
+      source = themeifyStyle(
+        original,
+        lib,
+        palette,
+        path.basename(path.dirname(file)),
+        variantLabel,
+      );
     } catch (err) {
       log.error(
         `Skipping ${path.relative(REPO_ROOT, file)} (${palette.key}): ${
@@ -164,10 +170,12 @@ function buildImport(
 // ---- Main ------------------------------------------------------------------
 const onlyKey = Deno.args[0]; // optional: generate a single theme
 const palettes = onlyKey
-  ? [getPalette(onlyKey) ?? (() => {
-    log.error(`Unknown theme: ${onlyKey}`);
-    return Deno.exit(1);
-  })()]
+  ? [
+    getPalette(onlyKey) ?? (() => {
+      log.error(`Unknown theme: ${onlyKey}`);
+      return Deno.exit(1);
+    })(),
+  ]
   : PALETTES;
 
 const files = getUserstylesFiles();
@@ -186,9 +194,9 @@ for (const palette of palettes) {
   const lib = buildLib(palette);
 
   if (palette.key === "gruvbox") {
-    // Gruvbox: 7 accent variants + a default (purple) alias.
-    for (const [label, accentKey] of Object.entries(GRUVBOX_ACCENTS)) {
-      const data = buildImport(files, lib, palette, accentKey);
+    // Gruvbox: backwards-compatible variant filenames + a default alias.
+    for (const label of GRUVBOX_VARIANTS) {
+      const data = buildImport(files, lib, palette, label);
       await writeImport(`gruvbox-${label}.import.json`, data);
       if (label === "purple") {
         await writeImport("gruvbox-userstyles.import.json", data);

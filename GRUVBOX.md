@@ -66,6 +66,25 @@ options).
 Verify: open <https://github.com> — it should render in your theme. Toggle your
 OS appearance light↔dark to see auto-switching (on themes that ship light).
 
+## Clearing this repo's styles
+
+Do not use Stylus's broad orphan-delete import workflow for this. It can include
+unrelated user styles. Use the targeted helper in
+[`site/clear-stylus-console.js`](site/clear-stylus-console.js) instead.
+
+1. Open Stylus → **Manage**.
+2. Open DevTools on that Stylus page and paste the helper script.
+3. The helper runs a preview automatically.
+4. Run `clearGruvboxStyles({ delete: true })` to delete only styles with the
+   exact generated marker.
+
+Generated imports include the stable marker
+`installed-from-id: brigbryu-gruvbox-userstyles`. The helper deletes only those
+marker-matched styles by default, downloads a full backup first, and requires
+typing `DELETE <count> GRUVBOX USERSTYLES` before removal. Old imports without
+the marker are listed as legacy candidates and are only deleted if you
+explicitly run `clearGruvboxStyles({ delete: true, legacy: true })`.
+
 ## Updating later
 
 Updates are manual on purpose. The generated styles have **no `@updateURL`**, so
@@ -108,10 +127,13 @@ name and updates the existing styles.
 
 ## Tweaking Gruvbox accents
 
-Gruvbox emits 7 accent files (`dist/gruvbox-<accent>.import.json`) by setting
-each style's `accentColor` default. The accent→role mapping lives in
-`GRUVBOX_ACCENTS` in `scripts/themes/generate-import.ts`. For any other theme,
-change the accent per-site via Stylus's **Accent** dropdown.
+Gruvbox emits 7 variant files (`dist/gruvbox-<variant>.import.json`) for
+backwards-compatible release links, but they all keep the normal Gruvbox
+`accentColor` default. Earlier accent-specific files changed every style's
+default accent globally, and some upstream styles use `@accent` broadly enough
+to turn large UI surfaces orange/green/etc. Change the accent per-site via
+Stylus's **Accent** dropdown when a specific site needs a stronger highlight
+color.
 
 ## Known limitations
 
